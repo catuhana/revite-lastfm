@@ -35,15 +35,11 @@ export class LastFM implements PlatformApi {
   }
 
   async getStatus() {
-    logger("Fetching status text...");
-
     const userInfo = await this.client.api.get("/users/@me");
     userInfo.status?.text;
   }
 
   async setStatus(status: LastFM["previousStatus"]) {
-    logger(`Setting status text to \`${status}\``);
-
     await this.client.api.patch("/users/@me", {
       status: {
         text: status,
@@ -52,8 +48,6 @@ export class LastFM implements PlatformApi {
   }
 
   async updateStatus() {
-    logger("Updating status text...");
-
     const currentListening = await this.fetchCurrentListening();
     if (!currentListening) {
       await this.setStatus(this.previousStatus);
@@ -71,8 +65,6 @@ export class LastFM implements PlatformApi {
   }
 
   async fetchCurrentListening() {
-    logger("Fetching current listening...");
-
     const fetchParams = new URLSearchParams({
       method: "user.getRecentTracks",
       format: "json",
@@ -85,7 +77,7 @@ export class LastFM implements PlatformApi {
     if (!response.ok) {
       logger("An error occurred when fetching last listens.", {
         status: response.status,
-        statusText: await response.text(),
+        message: (await response.json()).message,
       });
 
       return null;
