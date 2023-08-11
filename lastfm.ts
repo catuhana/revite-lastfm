@@ -55,6 +55,10 @@ export class LastFM implements PlatformApi {
     logger("Updating status text...");
 
     const currentListening = await this.fetchCurrentListening();
+    if (!(currentListening?.artistName && currentListening.trackName)) {
+      await this.setStatus(this.previousStatus);
+    }
+
     const statusText =
       `🎵 Listening to ${currentListening?.trackName} by ${currentListening?.artistName}`;
 
