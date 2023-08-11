@@ -6,20 +6,31 @@ const USERNAME = "";
 const API_KEY = "";
 
 (() => {
-  const client = window.controllers
+  let client = window.controllers
     .client
     .getReadyClient();
+  let plug: LastFM;
 
-  // TODO: Support for multiple services like ListenBrainz.
-  const plug = new LastFM({
-    client,
-    apiCredentials: {
-      username: USERNAME,
-      apiKey: API_KEY,
-    },
-  });
+  const retrieveClient = setInterval(() => {
+    if (!client) {
+      client = window.controllers
+        .client
+        .getReadyClient();
+    } else {
+      // TODO: Support for multiple services like ListenBrainz.
+      plug = new LastFM({
+        client,
+        apiCredentials: {
+          username: USERNAME,
+          apiKey: API_KEY,
+        },
+      });
 
-  plug.start().then(() => logger("Plugin started."));
+      plug.start().then(() => logger("Plugin started."));
+
+      clearInterval(retrieveClient);
+    }
+  }, 1000);
 
   return {
     onUnload: () => {

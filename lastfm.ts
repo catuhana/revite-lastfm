@@ -55,8 +55,9 @@ export class LastFM implements PlatformApi {
     logger("Updating status text...");
 
     const currentListening = await this.fetchCurrentListening();
-    if (!(currentListening?.artistName && currentListening.trackName)) {
+    if (!currentListening) {
       await this.setStatus(this.previousStatus);
+      return;
     }
 
     const statusText =
@@ -84,7 +85,7 @@ export class LastFM implements PlatformApi {
     if (!response.ok) {
       logger("An error occurred when fetching last listens.", {
         status: response.status,
-        statusText: response.statusText,
+        statusText: await response.text(),
       });
 
       return null;
