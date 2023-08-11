@@ -3,7 +3,7 @@
   "[typescript]": {
     "editor.defaultFormatter": "denoland.vscode-deno"
   },
-  "[json][jsonc]": {
+  "[json][markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
