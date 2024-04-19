@@ -44,7 +44,8 @@ To load the plugin:
   1. Copy the contents of \`plugin.json\` file
   2. Open Revolt client
   3. Open developer tools and select \`Console\`
-  4. Write \`state.plugins.add()\` and paste the copied code inside the braces.`,
+  4. Write \`state.plugins.add()\` and paste the copied code inside the braces.
+`,
   "color: limegreen",
   "color: inherit",
 );

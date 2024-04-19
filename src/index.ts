@@ -12,6 +12,8 @@ const API_KEY = ".{{API_KEY}}.";
 
   const retrieveClient = setInterval(() => {
     if (!client) {
+      logger("No client found. Retrying in a second.");
+
       client = window.controllers
         .client
         .getReadyClient();
@@ -33,7 +35,7 @@ const API_KEY = ".{{API_KEY}}.";
 
   return {
     onUnload: () => {
-      plug.stop().then(() => logger("Unloaded plugin."));
+      plug.stop().then(() => logger("Plugin unloaded."));
     },
   };
 });
