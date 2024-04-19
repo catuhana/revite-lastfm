@@ -21,7 +21,7 @@ Bring your Last.fm (or any other platform soon :tm:) listening status to Revolt!
 2. Enter to cloned directory
 3. Run `deno task bundle`
    - To have your username and api-key included, `--lastfm-username` and
-     `--lastfm-apikey` can be used. Bundle plugin will log warnings if they're
+     `--lastfm-apikey` can be used. Bundle script will log warnings if they're
      not entered.
 
 ## Using the Plugin
