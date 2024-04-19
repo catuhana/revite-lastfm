@@ -1,7 +1,7 @@
 {
   "format": 1,
   "version": "1.2.0",
-  "namespace": "tuhana",
-  "id": "LastFM",
+  "namespace": "catuhana",
+  "id": "revite-lastfm",
   "entrypoint": ""
 }
