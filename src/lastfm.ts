@@ -1,17 +1,17 @@
 import { logger } from "./logger.ts";
-import type { Client, PlatformApi } from "./types.ts";
+import { PlatformApi } from "./types.ts";
 
 export class LastFM implements PlatformApi {
   readonly apiEndpoint = "https://ws.audioscrobbler.com/2.0/";
   readonly refreshInterval = 12000;
   apiCredentials: { username: string; apiKey: string };
-  client: Client;
+  client: RevoltClient;
   previousStatus: string | null | undefined;
   interval?: number;
 
   constructor(
     constructor: {
-      client: Client;
+      client: RevoltClient;
       apiCredentials: LastFM["apiCredentials"];
     },
   ) {

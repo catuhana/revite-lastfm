@@ -1,5 +1,9 @@
 {
   "tasks": {
-    "bundle": "deno run --allow-env --allow-read --allow-write bundle.ts"
+    "bundle": "deno run --allow-env --allow-read --allow-write scripts/bundle.ts"
+  },
+  "imports": {
+    "emit": "https://deno.land/x/emit@0.40.0/mod.ts",
+    "discord.js": "npm:discord.js@^14.14.1"
   }
 }

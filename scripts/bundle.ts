@@ -1,7 +1,9 @@
-import { bundle } from "https://deno.land/x/emit@0.25.0/mod.ts";
-import manifest from "./manifest.json" assert { type: "json" };
+#!/usr/bin/env -S deno run --allow-env --allow-read --allow-write
 
-const pluginEntry = new URL("./index.ts", import.meta.url);
+import { bundle } from "emit";
+import manifest from "../manifest.json" with { type: "json" };
+
+const pluginEntry = new URL("../src/index.ts", import.meta.url);
 const bundledEntry = await bundle(pluginEntry);
 
 manifest.entrypoint = bundledEntry.code;
@@ -16,10 +18,9 @@ console.log(
 %cCode is bundled into \`./dist/plugin.json\` file!%c
 To load the plugin:
   1. Copy the contents of \`plugin.json\` file
-  2. Open Revolt
+  2. Open Revite client
   3. Open developer tools and select \`Console\`
-  4. Write \`state.plugins.add()\` and paste the code inside braces.
-`.trimEnd(),
+  4. Write \`state.plugins.add()\` and paste the code inside braces.`,
   "color: limegreen",
   "color: inherit",
 );
