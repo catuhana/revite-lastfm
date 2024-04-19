@@ -1,9 +1,8 @@
 import { LastFM } from "./lastfm.ts";
 import { logger } from "./logger.ts";
 
-// TODO: Add modal or similar thing to make these customisable by the user.
-const USERNAME = "";
-const API_KEY = "";
+const USERNAME = ".{{USERNAME}}.";
+const API_KEY = ".{{API_KEY}}.";
 
 (() => {
   let client = window.controllers

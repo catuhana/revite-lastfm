@@ -3,7 +3,8 @@
     "bundle": "deno run --allow-env --allow-read --allow-write scripts/bundle.ts"
   },
   "imports": {
-    "emit": "https://deno.land/x/emit@0.40.0/mod.ts",
-    "discord.js": "npm:discord.js@^14.14.1"
+    "@std/cli": "jsr:@std/cli@^0.223.0",
+    "discord.js": "npm:discord.js@^14.14.1",
+    "emit": "https://deno.land/x/emit@0.40.0/mod.ts"
   }
 }
